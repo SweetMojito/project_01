@@ -1,3 +1,5 @@
+https://openmlsys.github.io/chapter_distributed_training/index.html
+
 feature1,feature2,feature3,label
 1.0,2.0,3.0,10.0
 2.0,3.0,4.0,15.0
