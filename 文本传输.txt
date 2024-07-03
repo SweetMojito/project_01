@@ -1,3 +1,27 @@
+import subprocess
+import os
+
+def generate_requirements(project_path):
+    try:
+        # 使用 subprocess 运行 pipreqs
+        result = subprocess.run(
+            ["pipreqs", project_path, "--force"],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        print(f"Requirements file generated at {project_path}/requirements.txt")
+        print(result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred: {e.stderr}")
+
+# 项目路径
+project_path = "/path/to/your/project"
+
+# 生成 requirements.txt
+generate_requirements(project_path)
+
+
 https://openmlsys.github.io/chapter_distributed_training/index.html
 
 feature1,feature2,feature3,label
