@@ -1,3 +1,17 @@
+https://blog.devgenius.io/sparkmagic-livy-spark-1d3a94aad187
+
+# 模型训练
+mlflow run --env-manager local examples/sklearn_elasticnet_wine -P alpha=0.5
+
+# 将模型打包成镜像
+mlflow models build-docker --model-uri "runs:/some-run-uuid/my-model" --name "my-image-name"
+
+# 运行一个模型，指定服务端口
+mlflow models serve --env-manager local -h 0.0.0.0 -m my_model
+
+
+
+
 import subprocess
 import os
 
