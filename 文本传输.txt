@@ -1,0 +1,51 @@
+https://blog.devgenius.io/sparkmagic-livy-spark-1d3a94aad187
+
+# 模型训练
+mlflow run --env-manager local examples/sklearn_elasticnet_wine -P alpha=0.5
+
+# 将模型打包成镜像
+mlflow models build-docker --model-uri "runs:/some-run-uuid/my-model" --name "my-image-name"
+
+# 运行一个模型，指定服务端口
+mlflow models serve --env-manager local -h 0.0.0.0 -m my_model
+
+
+
+
+import subprocess
+import os
+
+def generate_requirements(project_path):
+    try:
+        # 使用 subprocess 运行 pipreqs
+        result = subprocess.run(
+            ["pipreqs", project_path, "--force"],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        print(f"Requirements file generated at {project_path}/requirements.txt")
+        print(result.stdout)
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred: {e.stderr}")
+
+# 项目路径
+project_path = "/path/to/your/project"
+
+# 生成 requirements.txt
+generate_requirements(project_path)
+
+
+https://openmlsys.github.io/chapter_distributed_training/index.html
+
+feature1,feature2,feature3,label
+1.0,2.0,3.0,10.0
+2.0,3.0,4.0,15.0
+3.0,4.0,5.0,20.0
+4.0,5.0,6.0,25.0
+5.0,6.0,7.0,30.0
+6.0,7.0,8.0,35.0
+7.0,8.0,9.0,40.0
+8.0,9.0,10.0,45.0
+9.0,10.0,11.0,50.0
+10.0,11.0,12.0,55.0
