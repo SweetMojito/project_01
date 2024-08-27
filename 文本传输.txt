@@ -1,3 +1,37 @@
+<dependency>
+  <groupId>com.github.vertical-blank</groupId>
+  <artifactId>sql-formatter</artifactId>
+  <version>2.0.5</version>
+</dependency>
+
+
+package com.tiger.spark.sql;
+
+import com.github.vertical_blank.sqlformatter.SqlFormatter;
+import com.github.vertical_blank.sqlformatter.core.FormatConfig;
+import com.github.vertical_blank.sqlformatter.languages.Dialect;
+
+import java.util.Arrays;
+
+public class SqlFormat {
+    public static void main(String[] args) {
+        String format = SqlFormatter
+                .of(Dialect.SparkSql)
+                .format("SELECT * FROM tbl",
+                        FormatConfig.builder()
+                                .indent("  ") // Defaults to two spaces
+                                .uppercase(true) // Defaults to false (not safe to use when SQL dialect has case-sensitive identifiers)
+                                .linesBetweenQueries(2) // Defaults to 1
+                                .maxColumnLength(100) // Defaults to 50
+                                .params(Arrays.asList("a", "b", "c")) // Map or List. See Placeholders replacement.
+                                .build()
+                );
+        System.out.println(format);
+    }
+}
+
+
+
 https://blog.devgenius.io/sparkmagic-livy-spark-1d3a94aad187
 
 # 模型训练
