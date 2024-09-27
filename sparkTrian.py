@@ -41,7 +41,6 @@ with mlflow.start_run():
     # 评估模型
     evaluator = RegressionEvaluator(labelCol="label", predictionCol="prediction", metricName="rmse")
     rmse = evaluator.evaluate(predictions)
-
     # 记录评估指标
     mlflow.log_metric("rmse", rmse)
 
